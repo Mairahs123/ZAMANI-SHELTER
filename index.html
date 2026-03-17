@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Zamani Shelters Marketplace • Abuja</title>
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <h1>🏠 Zamani Shelters</h1>
+  <p>Buy • Sell • Rent Properties in Abuja • Powered by Pi</p>
+</header>
+
+<div class="tabs">
+  <div class="tab active" id="tabBrowse" onclick="showTab(0)">Browse</div>
+  <div class="tab" id="tabPost" onclick="showTab(1)">Post Listing</div>
+  <div class="tab" id="tabAdmin" onclick="showTab(2)">Admin Dashboard</div>
+</div>
+
+<div class="container">
+  <div id="user-bar" style="display:none;">
+    <div id="userInfo"></div>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <!-- BROWSE -->
+  <div id="browseSection">
+    <button id="loginBtn" class="primary" onclick="loginWithPi()">Login with Pi to Start Trading</button>
+    <div id="filters" class="filter-bar" style="display:none;">
+      <button class="filter-btn active" onclick="filterListings('all')">All</button>
+      <button class="filter-btn" onclick="filterListings('rent')">Rent</button>
+      <button class="filter-btn" onclick="filterListings('sale')">Sale</button>
+    </div>
+    <div id="listingsContainer"></div>
+  </div>
+
+  <!-- POST -->
+  <div id="postSection" style="display:none;">
+    <h2>Post a New Listing</h2>
+    <div class="form-group"><label>Title</label><input id="postTitle" type="text" placeholder="e.g. 2-Bedroom Flat in Gwarinpa"></div>
+    <div class="form-group"><label>Type</label>
+      <select id="postType"><option value="rent">Rent (monthly)</option><option value="sale">Sale (one-time)</option></select>
+    </div>
+    <div class="form-group"><label>Price in Pi</label><input id="postPrice" type="number" min="1" placeholder="45"></div>
+    <div class="form-group"><label>Location</label><input id="postLocation" type="text" placeholder="Gwarinpa Estate, Abuja"></div>
+    <div class="form-group"><label>Description</label><textarea id="postDesc" rows="4" placeholder="Clean, secure..."></textarea></div>
+    <div class="form-group">
+      <label>Upload Main Photo</label>
+      <div class="upload-area" onclick="document.getElementById('postPhotoInput').click()">📸 Tap to choose from gallery</div>
+      <input type="file" id="postPhotoInput" accept="image/*" style="display:none;">
+      <img id="postPreview" alt="Preview">
+    </div>
+    <button id="postBtn" class="primary" onclick="postNewListing()">Post Listing</button>
+  </div>
+
+  <!-- ADMIN DASHBOARD -->
+  <div id="adminSection" style="display:none;">
+    <div class="admin-card">
+      <h2>Admin Dashboard</h2>
+      <div class="stat-grid" id="statsGrid"></div>
+    </div>
+    <div class="admin-card">
+      <h3>All Listings (Manage)</h3>
+      <div id="adminListingsContainer"></div>
+    </div>
+    <div class="admin-card">
+      <h3>Recent Transactions</h3>
+      <div id="mockTransactions"></div>
+    </div>
+    <button class="primary danger" onclick="clearAllListings()">🗑️ Clear All Listings (Test Only)</button>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+      </html>
