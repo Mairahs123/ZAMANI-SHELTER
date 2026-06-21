@@ -1,0 +1,24 @@
+{
+  "name": "zamani-shelters",
+  "version": "1.0.0",
+  "description": "Zamani Shelters - Pi Network Shelter Booking System",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "build": "echo 'Static site - No build step needed'",
+    "deploy": "vercel",
+    "dev": "serve ."
+  },
+  "dependencies": {
+    "@vercel/node": "^3.0.0"
+  },
+  "devDependencies": {
+    "serve": "^14.2.3",
+    "vercel": "^35.0.0"
+  },
+  "engines": {
+    "node": ">=18.x"
+  },
+  "author": "Zamani Shelters",
+  "license": "MIT"
+}
